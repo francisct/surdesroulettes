@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head data-gwd-animation-mode="quickMode">
+        <title>GoRoleWeb</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,100' rel='stylesheet' type='text/css'>
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="cimetiere.css" rel="stylesheet">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+        <link href="fullpage/jquery.fullPage.css" rel="stylesheet" type="text/css"/>
+        <script src="fullpage/jquery.fullPage.js" type="text/javascript"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+
+
+
+        <script type="text/javascript">
+
+            function goUpOrDown(button) {
+                var source = document.URL;
+                var pageAndSlide = source.match(/page\d\/\d\d/);
+                if (!pageAndSlide) {
+                    pageAndSlide = source.match(/page\d/);
+                }
+
+                var slideID = pageAndSlide[0].match(/\d{2}/);
+
+                var pageNumber = pageAndSlide[0].match(/\d{1}/);
+                //for top arrow                       
+                if (button.hasClass("topArrow")) {
+                    pageNumber = Number(pageNumber[0]) - 1;
+                }
+                //for bottomArrow                     
+                else {
+                    pageNumber = Number(pageNumber[0]) + 1;
+                }
+                var page = "page" + Number(pageNumber);
+
+                var width = $("body").width();
+                //if on the second or third slide (first slide does not have any data anchor) and first slide is the active slide on default
+                if (slideID) {
+                    //23 will return 3
+                    var slide = slideID[0].substring(1, 2);
+                }
+                //if on the first slide
+                else {
+                    var slide = "1";
+                }
+
+                //correponding conversion to the page and the slide
+                var position = width * Number(slide - 1) ;
+                $("#section" + pageNumber + " .fp-slidesContainer").css({"width": "300%", "-webkit-transform": "translate3d(-" + position + "px,0px,0px)", "transform": "translate3d(-" + position + "px, 0px, 0px)"});
+                $("#section" + pageNumber + " .fp-slidesContainer").addClass("fp-easing");
+                $("#slide" + pageNumber + slide).addClass("active");
+
+                if (slide != "1") {
+                    source = source.replace(/\d\/\d\d/, pageNumber + "/" + pageNumber + slide);
+                }
+                else {
+                    source = source.replace(/page\d/, "page" + pageNumber);
+                }
+                setTimeout(function() {
+                    window.location.href = source;
+                }, 600);
+            }
+            $(document).ready(function() {
+
+
+                //effects
+                $('#fullpage').fullpage({
+                    //Navigation
+                    controlArrows: false,
+                    loopTop: false,
+                    keyboardScrolling:false,
+                    loopBottom: false,
+                    loopHorizontal: false,
+                    sectionsColor: ['dimgray', 'ddimgray', 'dimgray'],
+                    anchors: ['page1', 'page2', 'page3'],
+                    css3: true
+
+                });
+
+
+
+
+                $(".topArrow, .bottomArrow").click(function(event) {
+                    goUpOrDown($(this));
+                });
+
+
+
+
+
+                $(".leftArrow").click(function(event) {
+                    setTimeout(function() {
+                        $.fn.fullpage.moveSlideLeft();
+                    }, 600);
+                });
+
+                $(".rightArrow").click(function(event) {
+                    event.preventDefault();
+                    setTimeout(function() {
+                        $.fn.fullpage.moveSlideRight();
+                    }, 600);
+                });
+
+
+               //handlers for keys
+                $(document).keydown(function(e) {
+                     e.preventDefault();
+                    switch (e.which) {
+                        case 37:
+                            //left arrow key
+                             setTimeout(function() {
+                        $.fn.fullpage.moveSlideLeft();
+                    }, 600);
+                            break;
+                        case 38:
+                            goUpOrDown($(".topArrow")); //up arrow key
+                            break;
+                        case 39:
+                             //right arrow key
+                             setTimeout(function() {
+                        $.fn.fullpage.moveSlideRight();
+                    }, 600);
+                            break;
+                        case 40:
+                           //bottom arrow key
+                           goUpOrDown($(".bottomArrow")); 
+                            break;
+                    }
+                });
+                
+
+
+                $("#toggleArrows").click(function(event) {
+                    var hideMes = $(".hideMe");
+                    if (hideMes.length == 0)
+                    {
+                        $(".arrowContainer").addClass("hideVisually");
+
+                        setTimeout(function() {
+                            $(".arrowContainer").addClass('hideMe');
+                        }, 700);
+
+                    }
+                    else
+                    {
+                        $(".arrowContainer").removeClass('hideMe')
+                        $(".arrowContainer").removeClass("hideVisually");
+                    }
+                });
+
+
+
+            });
+        </script>
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Ubuntu+Condensed|BenchNine|Voltaire|Open+Sans" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <div class="topbar"><div class="months"><a href="cimetiere.html" class="month">&nbsp;Cimetière&nbsp;</a><a href="topChallenge.html" class="month">&nbsp;Top Challenge&nbsp;</a></div>
+            <div class='tools'><button id='toggleArrows'>Pleine écran</button></div>
+        </div>
+
+        <div id="fullpage">
+
+
+            <div class="section" id="section1">
+
+
+                <div data-anchor="11" class="slide" id="slide11"> 
+
+                    <div class="arrowContainerBottom arrowContainer"><div class='circle'><button class='bottomArrow arrow'></button></div></div>
+
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerRight arrowContainer'><div class='circle'><button class='rightArrow arrow'></button></div></div>
+
+                        <div class="content"> 
+                            <div class='row centerText'> <h1 class="centerTitle">le CIMETIÈRE</h1>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div data-anchor="12" class="slide" id="slide12">
+
+                    <div class="arrowContainerBottom arrowContainer"><div class='circle'><button class='bottomArrow arrow'></button></div></div>
+
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerLeft arrowContainer'><div class='circle'> <button class='leftArrow arrow'></button></div> </div>
+                        <div class='arrowContainerRight arrowContainer'><div class='circle'><button class='rightArrow arrow'></button></div></div>
+
+                        <div class="content"> 
+                            <div class='row centerText'> <h1 class="centerTitle">notre video ici</h1>
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div data-anchor="13" class="slide" id="slide13"> 
+                    <div class="arrowContainerBottom arrowContainer"><div class='circle'><button class='bottomArrow arrow'></button></div></div>
+
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerLeft arrowContainer'><div class='circle'><button class='leftArrow arrow'></button></div></div>
+
+                        <div class="content"> 
+                            <iframe class='youtube' src="https://www.youtube.com/embed/l6zPcPW_stI" frameborder="0" allowfullscreen></iframe>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="section active" id="section2">
+
+
+                <div data-anchor="21" class="slide slide2Side" id="slide21"> 
+                    <div class="arrowContainerTop arrowContainer"><div class='circle'><button class='topArrow arrow'></button></div></div>
+                    <div class="arrowContainerBottom arrowContainer"><div class='circle'><button class='bottomArrow arrow'></button></div></div>
+
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerRight arrowContainer'><div class='circle'><button class='rightArrow arrow'></button></div></div>
+
+                        <div class="content"> 
+                            <div class="contentImg"></div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div data-anchor="22" class="slide active" id="slide22">  
+
+                    <div class="arrowContainerTop arrowContainer"><div class='circle'><button class='topArrow arrow'></button></div></div>
+                    <div class="arrowContainerBottom arrowContainer"><div class='circle'><button class='bottomArrow arrow'></button></div></div>
+                    
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerLeft arrowContainer'><div class='circle'> <button class='leftArrow arrow'></button></div> </div>
+                        <div class='arrowContainerRight arrowContainer'><div class='circle'><button class='rightArrow arrow'></button></div></div>
+                         <div class='moreInfoContainer'><button class='moreInfoButton'>+</button></div>
+                        <div class="content"> 
+                            <div class='row centerText'> <h1 class="centerTitle">le CIMETIÈRE</h1>
+<!--                                <input type="text" class="format col-lg-12 col-md-12 col-sm-12 col-xs-12" id="nouveauMP" name="rechercheVille"  placeholder="Laisse ton nom sur notre page"/>-->
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div data-anchor="23" class="slide slide2Side" id="slide23">
+
+                    <div class="arrowContainerTop arrowContainer"><div class='circle'><button class='topArrow arrow'></button></div></div>
+                    <div class="arrowContainerBottom arrowContainer"><div class='circle'><button class='bottomArrow arrow'></button></div></div>
+
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerLeft arrowContainer'><div class='circle'> <button class='leftArrow arrow'></button></div> </div>
+
+                        <div class="content"> 
+                            <div class='row centerText'> <h1 class="centerTitle">le CIMETIÈRE</h1>
+                            </div>
+                        </div>
+                        <div class='arrowContainerSide arrowContainer col-lg-1 col-md-1 col-sm-2 col-xs-2'></div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="section" id="section3">
+                <div data-anchor="31" class="slide" id="slide31"> 
+
+                    <div class="arrowContainerTop arrowContainer"><div class='circle'><button class='topArrow arrow'></button></div></div>
+
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerRight arrowContainer'><div class='circle'><button class='rightArrow arrow'></button></div></div>
+
+                        <div class="content"> 
+                            <div class='contentTextCenter'><p>CONSTRUCTION: 1854</p><p>PIERRES TOMBALES: 65,000+</p><p>PISTES: 5</p></div>
+                        </div>
+
+                    </div>
+                    <div class="arrowContainerBottom arrowContainer"></div>
+                </div>
+
+
+
+                <div data-anchor="32" class="slide active" id="slide32">  
+
+                    <div class="arrowContainerTop arrowContainer"><div class='circle'><button class='topArrow arrow'></button></div></div>
+
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerLeft arrowContainer'><div class='circle'> <button class='leftArrow arrow'></button></div> </div>
+                        <div class='arrowContainerRight arrowContainer'><div class='circle'><button class='rightArrow arrow'></button></div></div>
+
+                        <div class="content"> 
+                            <div class="contentImg2"></div>
+                        </div>
+
+                    </div>
+                    <div class="arrowContainerBottom arrowContainer"></div>
+                </div>
+
+
+
+                <div data-anchor="33" class="slide" id="slide33">
+                    <div class="arrowContainerTop arrowContainer"><div class='circle'><button class='topArrow arrow'></button></div></div>
+
+                    <div class="userDisplay container row">
+                        <div class='arrowContainerLeft arrowContainer'><div class='circle'> <button class='leftArrow arrow'></button></div> </div>
+
+                        <div class="content"> 
+                            <div class='row centerText'> <h1 class="centerTitle">le CIMETIÈRE</h1>
+                            </div>
+                        </div>
+
+                        <div class='arrowContainerSide arrowContainer col-lg-1 col-md-1 col-sm-2 col-xs-2'></div>
+
+                    </div>
+                    <div class="arrowContainerBottom arrowContainer"></div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </body>
+
+</html>

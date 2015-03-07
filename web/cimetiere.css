@@ -1,0 +1,355 @@
+
+      
+@font-face {
+    font-family: "brainflower";
+    src: url("art/Brain Flower Euro.ttf") format("truetype");
+}
+
+.arrowContainer.hideMe{
+    visibility:hidden;
+  
+}
+.arrowContainer.hideVisually{
+   opacity:0; 
+}
+.arrowContainer{
+    transition: all .6s ease-out;
+}
+
+        html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        
+      }
+      
+      html.no-touch, body.no-touch {
+        width: 100%;
+        height: 100%;
+		//min-width: 725px;
+                //min-height: 483px;
+        margin: 0px;
+      }
+      
+      .slide2Side{
+          background-color: dimgray;
+      }
+      
+	  .content{
+	  transition: all .3s ease-out;
+	  display:inline-block;
+	  height: 100%;
+	  width: 100%;
+	  padding: 0;
+}
+.circle{
+    height:50px;
+        width:50px;
+    border-radius:50%;
+    background-color: dimgray;
+    margin: auto;
+}
+          .arrowContainerLeft{
+              top: 40%;
+              
+              z-index:9999999;
+             
+              position: absolute;
+              left: 0.5%;   
+              width: 50px;   
+              height: 50px;
+}
+ .arrowContainerRight{
+    top: 40%;  z-index: 9999999;  
+    position: absolute;  
+    right: 0.5%;  width: 50px;  height: 50px;  
+}
+.contentImg{
+    background-image: url("art/cimetierebw.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+     height:100%;
+    width:100%;
+}
+.contentImg2{
+    background-image: url("art/cimetieremap.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.contentTextSide{
+  width:50%;
+  padding:5%;
+  position:relative;
+  text-align: justify;
+  font-family: brainflower;
+  color:white;
+  font-size:26pt;
+}
+.contentTextCenter{
+    width:80%;
+    top:20%;
+    position:relative;
+        text-align: center;
+        font-family: brainflower;
+  color:white;
+  font-size:26pt;
+    margin: auto;
+}
+      .arrow{
+    outline: none;
+    top: 4px;
+    left: 4px;
+    position: relative;
+    padding: 0;
+    margin: 0px;
+    z-index: 999999999;
+    display: block;
+    cursor: pointer;
+          
+    width: 40px;
+          
+    height: 40px;
+		  
+    background-size: 100%;
+          background-color: transparent;
+          border: none;
+          background-image: url("art/arrow.png");
+    background-repeat: no-repeat;
+    
+          background-position: center;
+    
+          -webkit-filter: invert(100%);
+    transition: all .3s ease-out;
+      }
+      
+      .arrow:hover{
+        -webkit-filter: invert(20%);   
+      }
+       
+      .topArrow{
+          transform: rotate(180deg);     
+}
+.leftArrow{
+    transform: rotate(90deg);
+}
+.rightArrow{
+    transform: rotate(-90deg);
+}
+      .arrowContainerTop, .arrowContainerBottom{
+          width: 40px;
+          height: 40px;
+          display:block;
+          margin:auto;
+      
+}
+.arrowContainerTop{
+    top: 7%;
+    position: absolute;
+    width: 33.3%;
+    height: 50px;
+    display: block;
+    z-index: 999999;
+}
+.arrowContainerBottom{
+    display: block;
+    bottom: 7px;
+    position: absolute;
+    width: 33.3%;
+    height: 50px;
+    /* z-index: 9999999; */
+}
+      .topbar{
+          position:fixed;
+          width:100%;
+          background-color:white;
+          height: 6%;
+          z-index: 1;
+      }
+      
+      .topbar button{
+          outline:none;
+          border:none;
+          font-family: raleway;
+          font-weight: lighter;
+          font-size: 18px;
+      
+          top: 18%;
+          position: relative;
+          background-color: transparent;
+}
+      
+      
+      .months{
+          height:100%;
+          width: 66%;
+          text-align:left;
+          display:inline-block;
+      }
+      .tools{
+           height:100%;
+          
+           width: 32.9%;
+          text-align:right;
+          display:inline-block;
+      }
+      .topbar a{
+        color: black;
+        display: inline-block;
+
+
+        font-family: raleway;
+font-weight: lighter;
+        text-align: center;
+
+        font-size: 18px;
+text-decoration: none;
+
+        margin-right: 3%;
+
+
+        top: 19%;
+        position: relative;
+//width: 18%;
+      }
+      .month{
+          margin-left: 2%;
+      }
+      
+      .moreInfoContainer{
+          position:absolute;
+          bottom:10px;
+          right:10px;
+      }
+      .moreInfoButton{
+          outline:none;
+          border:2px solid dimgray;
+          height: 45px;
+          width: 69px;
+      
+          z-index: 999999999;
+          line-height: 2px;
+          font-size: 16px;
+          background-color: transparent;
+}
+      
+      #pageDirection{
+          position:absolute;
+          bottom:10px;
+          right:10px;
+      }
+     
+      #arrow{
+          background-image: url("art/arrow.png");
+background-repeat: no-repeat;
+background-size: 100%;
+background-position: center;
+height: 100px;
+width: 100px;
+margin: auto;
+      }
+      
+      
+     
+      .centerTitle{
+         
+
+        outline: none;
+
+        display: inline-block;
+        text-align: center;
+margin: auto;
+
+        background-color: transparent;
+
+font-size:60px;
+color: black;
+font-family: brainflower;
+border: none;
+         
+          
+      transition: all .3s ease-out;
+         
+              
+      
+        top: 35%;
+        position: relative;
+}
+.centerText{
+    top: 40%;
+    position: relative;
+}
+      
+      
+     
+     
+	  
+	  .userDisplay{
+	  
+        text-align:center;
+width: 100%;
+        position: relative;
+
+        display: block;
+        top: 6%;
+            
+        z-index: 0;
+        height: 94%;
+
+	  
+	  
+        padding: 0;
+        /* z-index: -1; */
+}		
+           
+
+.youtube{
+    width:100%;
+        height:100%;
+    
+}
+			
+
+@media (max-width: 991px){
+
+     .centerTitle{
+          font-size: 45px;
+      }
+      
+      .topbar a{
+font-size: 14px;
+      }
+      .topbar button
+      {
+font-size: 14px;
+      }
+      }
+      @media (max-width: 991px) and (orientation:landscape){
+          .topbar a{
+              top:5%;
+          }
+          .topbar button{
+              top:5%;
+          }
+      }
+      
+      @media (orientation:portrait){
+          .contentImg, .contentImg2{
+              background-size: 290%;
+              //or 
+/*transform: rotate(90deg);
+              	
+               top: -50%; 
+	
+              left: -71%;
+          
+              position: relative;
+               height: 134%; 
+              width: 180%;
+      */
+}
+
+      }
+      
